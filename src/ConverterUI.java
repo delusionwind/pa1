@@ -36,9 +36,8 @@ public class ConverterUI extends JFrame{
 		convertButton = new JButton("Convert!!");
 		clearButton = new JButton("Clear");
 		equal = new JLabel("=");
-		input1 = new JTextField(7);
-		input2 = new JTextField(7);
-		input2.setEditable(false);
+		input1 = new JTextField(10);
+		input2 = new JTextField(10);
 		
 		Unit[] lengths = unitconverter.getUnits(UnitType.LENGTH);
 		unit1 = new JComboBox<Unit>( lengths );
@@ -50,7 +49,7 @@ public class ConverterUI extends JFrame{
 		UnitType[] unitTypes = UnitFactory.getInstance().getUnitTypes();
 		for(UnitType ut : unitTypes) {
 			JMenuItem menuItem = new JMenuItem(ut.toString());
-			menuItem.addActionListener( new UnitChangeAction());
+			menuItem.addActionListener( new UnitChangeAction(ut));
 			unitMenu.add(menuItem);
 		}
 		unitMenu.addSeparator();
@@ -146,7 +145,22 @@ public class ConverterUI extends JFrame{
 	}
 	
 	class UnitChangeAction extends AbstractAction {
+		private UnitType unitType;
+		
+		public UnitChangeAction(UnitType uType) {
+			unitType = uType;
+		}
+		
 		public void actionPerformed(ActionEvent evt) {
+			input1.setText("");
+			input2.setText("");
+			Unit[] units = unitconverter.getUnits( unitType );
+			unit1.removeAllItems();
+			unit2.removeAllItems();
+			for(Unit item : units) {
+				unit1.addItem(item);
+				unit2.addItem(item);
+			}
 			
 		}
 	}
