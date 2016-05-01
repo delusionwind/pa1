@@ -1,7 +1,7 @@
 
 public enum UnitType {
 	LENGTH("Length", Length.values()),
-	AREA("Area", null),
+	AREA("Area", Area.values()),
 	WEIGHT("Weight", null);
 	
 	private Unit[] units;
