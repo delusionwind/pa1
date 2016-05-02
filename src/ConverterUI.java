@@ -48,9 +48,9 @@ public class ConverterUI extends JFrame{
 		unitMenu = new JMenu("Unit Type");
 		UnitType[] unitTypes = UnitFactory.getInstance().getUnitTypes();
 		for(UnitType ut : unitTypes) {
-			JMenuItem menuItem = new JMenuItem(ut.toString());
-			menuItem.addActionListener( new UnitChangeAction(ut));
-			unitMenu.add(menuItem);
+			//JMenuItem menuItem = new JMenuItem("+"+ut.toString());
+			//menuItem.addActionListener( new UnitChangeAction(ut));
+			unitMenu.add(new UnitChangeAction(ut));
 		}
 		unitMenu.addSeparator();
 		JMenuItem exitItem = new JMenuItem("Exit");
@@ -148,15 +148,16 @@ public class ConverterUI extends JFrame{
 		private UnitType unitType;
 		
 		public UnitChangeAction(UnitType uType) {
+			super(uType.toString());
 			unitType = uType;
 		}
 		
 		public void actionPerformed(ActionEvent evt) {
 			input1.setText("");
 			input2.setText("");
-			Unit[] units = unitconverter.getUnits( unitType );
 			unit1.removeAllItems();
 			unit2.removeAllItems();
+			Unit[] units = unitconverter.getUnits( unitType );
 			for(Unit item : units) {
 				unit1.addItem(item);
 				unit2.addItem(item);
