@@ -82,6 +82,7 @@ public class ConverterUI extends JFrame{
 		this.setJMenuBar(unitMenuBar);
 		this.add(contents);
 	}
+	
 	/**
 	 * method to be call by the application to run the distance converter
 	 */
@@ -120,6 +121,7 @@ public class ConverterUI extends JFrame{
 			
 		}
 	}
+	
 	/**
 	 * action listener for clear button to clear text in both input text field
 	 */
@@ -144,6 +146,9 @@ public class ConverterUI extends JFrame{
 		}
 	}
 	
+	/**
+	 * action for different menu item to change the unit type of the converter.
+	 */
 	class UnitChangeAction extends AbstractAction {
 		private UnitType unitType;
 		

@@ -1,6 +1,6 @@
 
 /**
- * the distance converter calculation class.
+ * the unit converter calculation class.
  * @author Napon Kittisiriprasert
  */
 public class UnitConverter {
